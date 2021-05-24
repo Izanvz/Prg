@@ -19,32 +19,32 @@ public class Player {
 
         System.out.println("Estadisticas");
         
-        System.out.println(stats());
-        
         System.out.println(p.stats());
-        
-        p.hit(this.attackPoints);
         
         System.out.println("\n---------------------------------------------------------------------------------------------------- ");
         System.out.println("Resutado de la pelea :");
-        System.out.println(this.name+" a atacado a "+p.getName()+" con "+this.attackPoints+" de daño pero se defiende con "+p.getDefensePoints()+" puntos de armadura ");
+        p.hit(p.attackPoints);
         System.out.println("---------------------------------------------------------------------------------------------------- ");
-        
-        System.out.println(stats());
 
         System.out.println(p.stats());
 
     }
 
 
-    protected void hit(int attackPoints) {
+    protected void hit(int PAtaque) {
 
 
         int dmg = 0;
-        dmg = this.attackPoints - getDefensePoints();
+        dmg = PAtaque - getDefensePoints();
         int lifeF = getLife();
+        System.out.println(dmg);
 
+        
+        System.out.println(name+" a sido atacado con "+PAtaque+" de daño pero se defiende con "+this.getDefensePoints()+" puntos de armadura ");
         lifeF -= dmg;
+        System.out.println("Resultado : "+getLife()+" - "+dmg+" = "+lifeF);
+        
+        
         
         setLife(lifeF);
 
