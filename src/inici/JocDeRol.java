@@ -26,11 +26,21 @@ public class JocDeRol {
     
     public static void provaFase(){
 
-        Human human2 = new Human("human2", 26,17,150);
+        Human human2 = new Human("human2", 25,20,150);
         Warrior warrior2 = new Warrior("warrior2", 25,20,100);
-        Alien alien2 = new Alien("alien2", 1,20,100);
+        Alien alien2 = new Alien("alien2", 40,20,100);
 
-        warrior2.Attack(alien2);
+        
+        System.out.println("--ALIEN VS WARRIOR--\n");
+        alien2.Attack(warrior2);
+        System.out.println("*****************************************************************************************************\n");
+        System.out.println("--WARRIOR VS HUMAN--\n");
+        warrior2.Attack(human2);
+        System.out.println("*****************************************************************************************************\n");
+        System.out.println("--HUMAN VS ALIEN--\n");
+        human2.Attack(alien2);
+        System.out.println("*****************************************************************************************************\n");
+        
 
     }
                                                                                   

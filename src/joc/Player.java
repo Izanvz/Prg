@@ -37,10 +37,10 @@ public class Player {
         int dmg = 0;
         dmg = PAtaque - getDefensePoints();
         int lifeF = getLife();
-        System.out.println(dmg);
-
         
-        System.out.println(name+" a sido atacado con "+PAtaque+" de daño pero se defiende con "+this.getDefensePoints()+" puntos de armadura ");
+        if(dmg <= 0){dmg = 0;}
+        
+        System.out.println(name+" a sido atacado con "+PAtaque+" de daño pero se defiende con "+getDefensePoints()+" puntos de armadura ");
         lifeF -= dmg;
         System.out.println("Resultado : "+getLife()+" - "+dmg+" = "+lifeF);
         
