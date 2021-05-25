@@ -26,8 +26,9 @@ public class JocDeRol {
     
     public static void provaFase(){
 
-        Alien alien2 = new Alien("personajea2", 7,4,4);
-        Warrior warrior2 = new Warrior("personajew2", 6,6,5);
+        Human human2 = new Human("human2", 26,17,150);
+        Warrior warrior2 = new Warrior("warrior2", 25,20,100);
+        Alien alien2 = new Alien("alien2", 1,20,100);
 
         warrior2.Attack(alien2);
 

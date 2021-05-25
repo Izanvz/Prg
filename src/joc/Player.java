@@ -5,7 +5,7 @@ public class Player {
     private String name;
     private int attackPoints;
     private int defensePoints;
-    private int life;
+    int life;
 
 
     public Player(String name, int attackPoints, int defensePoints, int life) {
