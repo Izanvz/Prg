@@ -36,7 +36,7 @@ public class Warrior extends Human{
             dmg = 0;
             System.out.println("Agilidad activada");
         }
-      
+        
         lifeF -= dmg;
         System.out.println("Resultado : "+getLife()+" - "+dmg+" = "+lifeF);
         

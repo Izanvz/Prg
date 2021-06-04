@@ -30,7 +30,10 @@ public class JocDeRol {
         Warrior warrior2 = new Warrior("warrior2", 25,20,100);
         Alien alien2 = new Alien("alien2", 40,20,100);
 
-        
+        Team passif = new Team("passifteam");
+        Team macia = new Team("maciteam");
+
+
         System.out.println("--ALIEN VS WARRIOR--\n");
         alien2.Attack(warrior2);
         System.out.println("*****************************************************************************************************\n");
@@ -40,8 +43,13 @@ public class JocDeRol {
         System.out.println("--HUMAN VS ALIEN--\n");
         human2.Attack(alien2);
         System.out.println("*****************************************************************************************************\n");
-        
 
+
+        human2.add(passif);
+        alien2.add(macia);
+
+        human2.stats();
+        alien2.stats();
     }
                                                                                   
 }

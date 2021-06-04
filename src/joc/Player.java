@@ -1,11 +1,15 @@
 package joc;
 
+import java.util.ArrayList;
+
 public class Player {
 
     private String name;
     private int attackPoints;
     private int defensePoints;
-    int life;
+    private int life;
+    protected ArrayList<Team> teams;
+    int cant_equipos;
 
 
     public Player(String name, int attackPoints, int defensePoints, int life) {
@@ -15,6 +19,8 @@ public class Player {
         this.life = life;
     }
 
+    
+    
     public void Attack(Player p){
 
         System.out.println("Estadisticas");
@@ -50,6 +56,29 @@ public class Player {
 
     }
 
+    public void add(Team t){
+
+        this.teams.add(t);
+        t.add(this);
+        cant_equipos = teams.size();
+
+    }
+
+    public void remove(Team t){
+
+        if (!this.teams.contains(t))
+            return;
+        this.teams.remove(t);
+        t.remove(this);
+        cant_equipos = teams.size();
+
+    }
+
+    public void list(Team t){
+
+        System.out.println(this);
+
+    }
 
     public String getName() {
         return name;
@@ -85,6 +114,6 @@ public class Player {
 
 
     public String stats() {
-        return "\nPlayerInfo { "+ name + " PA :"+attackPoints+" / PD : "+ defensePoints +" / PV : "+ life +"}";
+        return "\nPlayerInfo { "+ name + " PA :"+attackPoints+" / PD : "+ defensePoints +" / PV : "+ life +" Pertenece a : "+cant_equipos+" equipos}";
     }
 }
