@@ -9,7 +9,6 @@ public class Player {
     private int defensePoints;
     private int life;
     protected ArrayList<Team> teams;
-    int cant_equipos;
 
 
     public Player(String name, int attackPoints, int defensePoints, int life) {
@@ -17,6 +16,7 @@ public class Player {
         this.attackPoints = attackPoints;
         this.defensePoints = defensePoints;
         this.life = life;
+        setTeams(new ArrayList<>());
     }
 
     
@@ -56,28 +56,32 @@ public class Player {
 
     }
 
-    public void add(Team t){
+    public void addTeam(Team t) {
 
+        if (this.teams.contains(t)) return;
         this.teams.add(t);
         t.add(this);
-        cant_equipos = teams.size();
-
     }
 
-    public void remove(Team t){
+    public void removeTeam(Team t) {
 
-        if (!this.teams.contains(t))
-            return;
+        if (!this.teams.contains(t)) return;
         this.teams.remove(t);
         t.remove(this);
-        cant_equipos = teams.size();
-
     }
 
-    public void list(Team t){
+    public void lista(Player p){
 
         System.out.println(this);
 
+    }
+
+    public ArrayList<Team> getTeams() {
+        return teams;
+    }
+
+    public void setTeams(ArrayList<Team> teams) {
+        this.teams = teams;
     }
 
     public String getName() {
@@ -114,6 +118,6 @@ public class Player {
 
 
     public String stats() {
-        return "\nPlayerInfo { "+ name + " PA :"+attackPoints+" / PD : "+ defensePoints +" / PV : "+ life +" Pertenece a : "+cant_equipos+" equipos}";
+        return "\nPlayerInfo { "+ name + " PA :"+attackPoints+" / PD : "+ defensePoints +" / PV : "+ life +" Pertenece a : "+this.getTeams().size()+" equipos}";
     }
 }

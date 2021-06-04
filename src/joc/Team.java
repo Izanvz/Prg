@@ -15,29 +15,31 @@ public class Team {
     
     private String name;
 
-    private ArrayList<Player> players = new ArrayList();
+    private ArrayList<Player> players;
 
-    public Team(String name) {
-        this.name = name;
+        public Team(String name) {
+            this.name = name;
+            this.players = new ArrayList<>();
+        }
+
+        public void add(Player p) {
+            if (players.contains(p)) return;
+            this.players.add(p);
+            p.addTeam(this);
+        }
+
+        public void remove(Player p) {
+            if (!players.contains(p)) return;
+            this.players.remove(p);
+            p.removeTeam(this);
+        }
+
+    public static void list(Team t){
+
+        System.out.println(t);
+
     }
-    
-    public void add(Player p){
 
-        players.add(p);
-
-    }
-    
-    public void remove(Player p){
-
-        players.remove(p);
-
-    }
-    
-    public void lista(Player p){
-
-        System.out.println(this);
-
-    }
 
     public ArrayList<Player> getPlayers() {
         return players;
