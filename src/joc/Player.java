@@ -98,6 +98,21 @@ public class Player {
 
     }
 
+    //----------------------------------Equals------------------------------------//
+
+    public boolean equals(Player p) {
+
+        boolean res = false;
+
+        if (this.name == p.getName()) { res = true; }
+
+        else if (this.name != p.getName()) { res = false; }
+
+
+        return res;
+
+    }
+
     //-----------------------------Getters/Setters-------------------------------//
 
     public ArrayList<Team> getTeams() {
@@ -161,9 +176,11 @@ public class Player {
             } else {
                 info += "- " + i.getName() + " BA: " + i.getAttackBonus() + " / BD: " + i.getDefenseBonus();
             }
-        }
+    }
 
 
         return info;
     }
+
+
 }
