@@ -9,6 +9,7 @@ public class Player {
     private int defensePoints;
     private int life;
     protected ArrayList<Team> teams;
+    protected ArrayList<Item> items;
 
 
     public Player(String name, int attackPoints, int defensePoints, int life) {
@@ -17,10 +18,10 @@ public class Player {
         this.defensePoints = defensePoints;
         this.life = life;
         setTeams(new ArrayList<>());
+        setItems(new ArrayList<>());
     }
 
-    
-    
+    //----------------------------------Atacar-----------------------------------//
     public void Attack(Player p){
 
         System.out.println("Estadisticas");
@@ -35,7 +36,6 @@ public class Player {
         System.out.println(p.stats());
 
     }
-
 
     protected void hit(int PAtaque) {
 
@@ -56,6 +56,8 @@ public class Player {
 
     }
 
+    //----------------------------------Teams------------------------------------//
+
     public void addTeam(Team t) {
 
         if (this.teams.contains(t)) return;
@@ -70,14 +72,44 @@ public class Player {
         t.remove(this);
     }
 
-    public void lista(Player p){
+    public void lista(Player p){ System.out.println(this); }
 
-        System.out.println(this);
+    //----------------------------------Items------------------------------------//
+
+    public void addItem(Item i){
+        if (this.items.contains(i)) return;
+        this.items.add(i);
+    }
+
+    public void removeItem(Item i){
+        if (!this.items.contains(i)) return;
+        this.items.remove(i);
+    }
+
+    public String listaItem(){
+
+        String inventario = " ";
+
+        for (int i = 0; i < items.size(); i++) {
+        inventario += items.get(i);
+        }
+
+        return inventario;
 
     }
 
+    //-----------------------------Getters/Setters-------------------------------//
+
     public ArrayList<Team> getTeams() {
         return teams;
+    }
+
+    public ArrayList<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(ArrayList<Item> items) {
+        this.items = items;
     }
 
     public void setTeams(ArrayList<Team> teams) {
@@ -116,8 +148,22 @@ public class Player {
         this.life = life;
     }
 
+    //---------------------------------toString-----------------------------------//
 
     public String stats() {
-        return "\nPlayerInfo { "+ name + " PA :"+attackPoints+" / PD : "+ defensePoints +" / PV : "+ life +" Pertenece a : "+this.getTeams().size()+" equipos}";
+
+        String info= "\nPlayerInfo { "+ name + " PA :"+attackPoints+" / PD : "+ defensePoints +" / PV : "+ life +"}\n{Equipos : "+this.getTeams().size()+"}\n{Items : ";
+
+        for (int j = 0; j < items.size(); j++) {
+            Item i = items.get(j);
+            if (!(j == items.size() - 1)) {
+                info += "- " + i.getName() + " BA: " + i.getAttackBonus() + " / BD: " + i.getDefenseBonus() + "\n";
+            } else {
+                info += "- " + i.getName() + " BA: " + i.getAttackBonus() + " / BD: " + i.getDefenseBonus();
+            }
+        }
+
+
+        return info;
     }
 }

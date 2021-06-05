@@ -32,6 +32,7 @@ public class JocDeRol {
 
         Team passif = new Team("passifteam");
         Team macia = new Team("maciteam");
+        Item espada = new Item("espadote",4, 2);
 
 /*
         System.out.println("--ALIEN VS WARRIOR--\n");
@@ -45,16 +46,15 @@ public class JocDeRol {
         System.out.println("*****************************************************************************************************\n");
 */
 
-        human2.addTeam(passif);
         alien2.addTeam(macia);
 
+        human2.addItem(espada);
 
 
 
         System.out.println(human2.stats());
         System.out.println(alien2.stats());
 
-        Team.list(passif);
     }
                                                                                   
 }
