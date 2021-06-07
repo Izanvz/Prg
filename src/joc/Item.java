@@ -9,11 +9,20 @@ public class Item {
     private int attackBonus;
     private int defenseBonus;
 
+    /**
+     *
+     * @param name
+     * @param attackBonus
+     * @param defenseBonus
+     */
     public Item(String name, int attackBonus, int defenseBonus) {
         this.name = name;
         this.attackBonus = attackBonus;
         this.defenseBonus = defenseBonus;
+        System.out.println("item creado");
     }
+
+    public Item() { }
 
     public String getName() {
         return name;
@@ -38,4 +47,17 @@ public class Item {
     public void setDefenseBonus(int defenseBonus) {
         this.defenseBonus = defenseBonus;
     }
+
+    /**
+     *
+     * @return
+     */
+    public String i_info() {
+        return "Item{" +
+                "name='" + name + '\'' +
+                ", attackBonus=" + attackBonus +
+                ", defenseBonus=" + defenseBonus +
+                '}';
+    }
+
 }

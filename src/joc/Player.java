@@ -11,7 +11,15 @@ public class Player {
     protected ArrayList<Team> teams;
     protected ArrayList<Item> items;
 
+    //CONTRUCTOR BASE//
 
+    /**
+     *
+     * @param name
+     * @param attackPoints
+     * @param defensePoints
+     * @param life
+     */
     public Player(String name, int attackPoints, int defensePoints, int life) {
         this.name = name;
         this.attackPoints = attackPoints;
@@ -20,24 +28,27 @@ public class Player {
         setTeams(new ArrayList<>());
         setItems(new ArrayList<>());
     }
+    //Constructor para usarlo como capsula(transportar objetos de Player)
+    public Player() { }
 
     //----------------------------------Atacar-----------------------------------//
-    public void Attack(Player p){
 
-        System.out.println("Estadisticas");
-        
-        System.out.println(p.stats());
-        
-        System.out.println("\n---------------------------------------------------------------------------------------------------- ");
-        System.out.println("Resutado de la pelea :");
+    /**
+     *
+     * @param p
+     * @throws excepcions.excepcionmuerto
+     */
+    public void Attack(Player p) throws excepcions.excepcionmuerto {
+
         p.hit(p.attackPoints);
-        System.out.println("---------------------------------------------------------------------------------------------------- ");
-
-        System.out.println(p.stats());
 
     }
 
-    protected void hit(int PAtaque) {
+    /**
+     *
+     * @param PAtaque
+     */
+    protected void hit(int PAtaque){
 
 
         int dmg = 0;
@@ -58,48 +69,57 @@ public class Player {
 
     //----------------------------------Teams------------------------------------//
 
-    public void addTeam(Team t) {
+    /**
+     *
+     * @param t
+     * @throws excepcions.excepciojugadorsrepetits
+     */
+    public void addTeam(Team t) throws excepcions.excepciojugadorsrepetits{
 
         if (this.teams.contains(t)) return;
         this.teams.add(t);
         t.add(this);
     }
 
-    public void removeTeam(Team t) {
+    /**
+     *
+     * @param t
+     * @throws excepcions.excepciolleverequip
+     */
+    public void removeTeam(Team t) throws excepcions.excepciolleverequip{
 
         if (!this.teams.contains(t)) return;
         this.teams.remove(t);
         t.remove(this);
     }
 
-    public void lista(Player p){ System.out.println(this); }
-
     //----------------------------------Items------------------------------------//
 
+    /**
+     *
+     * @param i
+     */
     public void addItem(Item i){
         if (this.items.contains(i)) return;
         this.items.add(i);
     }
 
+    /**
+     *
+     * @param i
+     */
     public void removeItem(Item i){
         if (!this.items.contains(i)) return;
         this.items.remove(i);
     }
 
-    public String listaItem(){
-
-        String inventario = " ";
-
-        for (int i = 0; i < items.size(); i++) {
-        inventario += items.get(i);
-        }
-
-        return inventario;
-
-    }
-
     //----------------------------------Equals------------------------------------//
 
+    /**
+     *
+     * @param p
+     * @return
+     */
     public boolean equals(Player p) {
 
         boolean res = false;
@@ -165,21 +185,22 @@ public class Player {
 
     //---------------------------------toString-----------------------------------//
 
+    /**
+     *
+     * @return
+     */
     public String stats() {
 
-        String info= "\nPlayerInfo { "+ name + " PA :"+attackPoints+" / PD : "+ defensePoints +" / PV : "+ life +"}\n{Equipos : "+this.getTeams().size()+"}\n{Items : ";
+        String info = "";
 
-        for (int j = 0; j < items.size(); j++) {
-            Item i = items.get(j);
-            if (!(j == items.size() - 1)) {
-                info += "- " + i.getName() + " BA: " + i.getAttackBonus() + " / BD: " + i.getDefenseBonus() + "\n";
-            } else {
-                info += "- " + i.getName() + " BA: " + i.getAttackBonus() + " / BD: " + i.getDefenseBonus();
-            }
-    }
+        for (int i = 0; i < items.size(); i++) {
+                info += items.get(i).getName() + " BA: " + items.get(i).getAttackBonus() + " / BD: " + items.get(i).getDefenseBonus() + "\n";
+        }
 
 
-        return info;
+        return  "\n{ Nombre "+ getName() + " PA :"+getAttackPoints()+" / PD : "+ getDefensePoints() +" / PV : "+ getLife() +"}" +
+                "\n{ Equipos : "+this.getTeams().size()+" }" +
+                "\n{ Items : "+ info +" }";
     }
 
 

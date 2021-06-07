@@ -17,29 +17,33 @@ public class Team {
 
     private ArrayList<Player> players;
 
-        public Team(String name) {
+    /**
+     *
+     * @param name
+     */
+    public Team(String name) {
             this.name = name;
             this.players = new ArrayList<>();
         }
 
-        public void add(Player p) {
+//Constructor para usarlo como capsula(transportar objetos de Team)//
+    public Team() { }
+
+    //-----------------------AÑADIR Y BORRAR------------------------------//
+
+    public void add(Player p) throws excepcions.excepciojugadorsrepetits{
             if (players.contains(p)) return;
             this.players.add(p);
             p.addTeam(this);
         }
 
-        public void remove(Player p) {
-            if (!players.contains(p)) return;
-            this.players.remove(p);
-            p.removeTeam(this);
-        }
-
-    public static void list(Team t){
-
-        System.out.println(t);
-
+    public void remove(Player p) throws excepcions.excepciolleverequip {
+        if (!players.contains(p)) return;
+        this.players.remove(p);
+        p.removeTeam(this);
     }
 
+    //-------------------------GETTERS Y SETTERS--------------------------//
 
     public ArrayList<Player> getPlayers() {
         return players;
@@ -49,10 +53,20 @@ public class Team {
         this.players = players;
     }
 
-    @Override
-    public String toString() {
-        return "Team{" + "Nombre=" + name + '}';
+    public String getName() {
+        return name;
     }
-    
-    
+
+    //---------------------------TOSTRING---------------------------//
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String e_info() {
+        return "Team{" +
+                "name='" + name + '\'' +
+                ", players=" + players +
+                '}';
+    }
 }

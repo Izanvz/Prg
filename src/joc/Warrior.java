@@ -2,27 +2,33 @@ package joc;
 
 public class Warrior extends Human{
 
+    /**
+     *
+     * @param name
+     * @param attackPoints
+     * @param defensePoints
+     * @param life
+     */
     public Warrior(String name, int attackPoints, int defensePoints, int life) {
         super(name, attackPoints, defensePoints, life);
-        
+        System.out.println("New Warrior...");
     }
-    
+    //LE DAMOS A WARRIOR SU PROPIO ATTACK Y HIT POR SUS CARACTERISTICAS ESPECIALES//
+
+    /**
+     *
+     * @param p
+     */
      public void Attack(Player p){
-
-        System.out.println("Estadisticas");
-        
-        System.out.println(p.stats());
-        
-        System.out.println("\n---------------------------------------------------------------------------------------------------- ");
-        System.out.println("Resutado de la pelea :");
         p.hit(p.getAttackPoints());
-        System.out.println("---------------------------------------------------------------------------------------------------- ");
-
-        System.out.println(p.stats());
-
     }
 
+    //MODIFICAMOS HIT PARA WARRIOR Y SU HABILIDAD DE AGILIDAD//
 
+    /**
+     *
+     * @param PAtaque
+     */
     protected void hit(int PAtaque) {
 
 
